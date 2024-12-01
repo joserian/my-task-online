@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senac - Tarefas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+</head>
+<body>
+    <div id="primary-container">
+        <div id="chat">
+            <div id="chat-icon">
+                <span class="material-symbols-outlined">forum</span>
+            </div>
+            <div id="messages-container">
+                <div id="username">
+                    <label for="">Escreva seu nome:</label>
+                    <input type="text">
+                </div>
+                <div id="messages"></div>
+                <div id="input-container">
+                    <div id="input">
+                        <p id="input-message" contenteditable="true"></p>
+                    </div>
+                    <div id="send-icon">
+                        <span id="icon" class="material-symbols-outlined">east</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="logo">
+            <img src="senac-logo-nova.png" alt="senac-logo">
+        </div>
+        <div id="boards">
+            <div class="board board0">
+                <div class="topbar">
+                    <div class="title-board">A fazer<br></div>
+                    <div class="remove board0"><span class="material-symbols-outlined">delete</span></div>
+                    <div class="add board0"><span class="material-symbols-outlined">add</span></div>
+                </div>
+                <div class="tasks board0">
+                    <!-- <div id="merda" class="task" draggable="true">
+                        <p contenteditable="true">asasdf</p>
+                    </div> -->
+                </div>
+            </div>
+            <div class="board board1">
+                <div class="topbar">
+                    <div class="title-board">Concluido</div>
+                    <div class="remove board1"><span class="material-symbols-outlined">delete</span></div>
+                    <div class="add board1"><span class="material-symbols-outlined">add</span></div>
+                </div>
+                <div class="tasks board1">
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+    <!-- <div id="fade"></div> -->
+    <!-- <div id="log">
+        <div class="task-log">
+            <p>asasdf</p>
+        </div>
+        <div id="options">
+            <div id="message">Tem certeza que deseja excluir essa tarefa?</div>
+            <div id="buttons">
+                <button>Não</button>
+                <button>Sim</button>
+            </div>
+        </div>
+    </div> -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
