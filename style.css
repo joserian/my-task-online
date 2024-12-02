@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
     --title-size: 24px;
@@ -23,7 +23,7 @@
 html, body {
     width: 100%;
     height: 100%;
- background-color: #003C69;
+    background-color: #003C69;
     position: relative;
 }
 
@@ -38,7 +38,6 @@ html, body {
     pointer-events: all;
 }
 
-    /* HTML: <div class="loader"></div> */
 #loading-icon {
     position: relative;
     top: 50%;
@@ -72,14 +71,31 @@ html, body {
     position: relative;
     z-index: 0;
     
-    #logo {
+    #top-container {
         box-sizing: content-box;
-        width: 100%; height: 60px;  text-align: center;
-        padding-block: 20px; /*40px*/
+        width: 100%; 
+        height: max-content;
+        padding-block: 30px;
+        margin-bottom: 40px; /*40px*/
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(45deg, #fea50a 0%, #feb41e);
+        text-align: center;
 
-        img {
-            height: 100%;
+        #Senac-logo {
+            height: 100px;
         }
+
+        #title {
+            width: fit-content;
+            font-size: 64px;
+            color: #fff;
+            font-weight: bold;
+        }
+
     }
 }
 
@@ -116,6 +132,10 @@ html, body {
         p {
             word-wrap: break-word;
         }
+
+        img {
+            max-width: 100%;
+        }
     }
 
     #options {
@@ -139,6 +159,7 @@ html, body {
                 box-shadow: 0px 0px 1px black;
                 border: 2px solid transparent;
             }
+
             button:first-child {
                 background-color: #40a02b;
             }
@@ -162,7 +183,7 @@ html, body {
 
 #chat {
     position: absolute;
-    top: 20px;
+    top: 190px;
     left: 15px;
     z-index: 2;
     transition: 0.3s ease;
@@ -188,24 +209,22 @@ html, body {
     #messages-container {
         display: none;
     }
-
-    
-
 } 
 
-/* CHAT */ 
-
-.chat-nome{
-    width: 100%;
-    border-radius: 10px;
-    height: 30px;
-    outline: none;
-    border:  2px solid #11111b;
-  
-   
-}
-
 #chat.expanded {
+    #username {
+        width: 100%;
+        border-radius: 5px;
+        height: 30px;
+        outline: none;
+        padding: 8px 12px 4px 12px;
+       
+    }
+    
+    #username:focus {
+        outline:  2px solid #11111b;
+    }
+
     #messages-container {
         margin-inline: 15px;
         width: 350px; 
@@ -222,12 +241,32 @@ html, body {
             border-radius: 5px;
             margin-top: 5px;
             flex: 1;
-           
+            padding: 5px; 
+            overflow-y: auto; 
+            scroll-behavior: smooth;
+
+            .message-container {
+                position: relative; width: 100%; min-height: fit-content; border-radius: 20px; background-color: white; margin: 10px 0px 20px 0px; padding: 10px;
+                .user {
+                    position: absolute; top: -10px; left: 10px; padding: 0px 5px; background-color: white; font-weight: bold; 
+                }
+                .message {
+                    word-break: break-all;
+                    img {
+                        max-width: 100%;
+                    }
+                    
+                }
+            }
+            .message-container:last-child {
+                margin-bottom: 0;
+            }
         }
 
         #input-container {
             width: 100%;
             min-height: 60px;
+            max-height: 200px;
             height: fit-content;
             display: flex;
             align-items: end;
@@ -242,10 +281,17 @@ html, body {
                 #input-message {
                     width: 100%;
                     height: 100%;
+                    overflow: auto;
+                    
                     word-break: break-all;
                     outline: none;
                     border-radius: 15px;
                     padding: 8px 12px 4px 12px;
+
+                    img {
+                        max-width: 100%;
+                        border-radius: 20px;
+                    }
                    
                 }
                 
@@ -261,12 +307,8 @@ html, body {
                 background-color: #23d812;
                 position: relative;
                 top: -8px;
-                cursor: pointer;
-
                 left: 3px;
-
-              
-
+                cursor: pointer;
 
                 #icon {
                     position: relative;
@@ -364,23 +406,6 @@ html, body {
             }
         }
     }
-    
-/*     
-    #messages {
-        display: block;
-        width: 100%; height: fit-content; padding: 5px; overflow-y: auto; scroll-behavior: smooth;
-        background-color: red;
-    }
-
-    #input {
-        display: block;
-        background-color: blue;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-    } */
-
 }
 
 #boards {
@@ -398,7 +423,8 @@ html, body {
     margin: 0px 20px 20px 20px;
     border-radius: 15px;
     padding: 10px;
-    border: 1px solid rgb(33, 0, 41);
+    /* border: 1px solid rgb(33, 0, 41); */
+    box-shadow: 0px 0px 2px black;
 }
 
 .topbar {
@@ -423,7 +449,6 @@ html, body {
             animation: decrease 2s forwards; 
         }
     }
-    
 
     .remove, .add {
         background-color: white; transition: background-color 0.1s ease;
@@ -466,12 +491,6 @@ html, body {
     scrollbar-width: thin;
     border-radius: 7px;
 
-
- 
-
-    
-
-
     .task {
         width: 100%;
         min-height: 60px;
@@ -480,7 +499,7 @@ html, body {
         border-radius: 8px;
         padding: 8px 12px 4px 12px;
         cursor: pointer;
-        box-shadow: 0px 0px 2px #4c4f69;
+        box-shadow: 0px 0px 2px black;
 
         transition: border-color 0.2s ease;
 
@@ -488,6 +507,11 @@ html, body {
             word-wrap: break-word;
             outline: none;
             cursor: text;
+        }
+        
+        img {
+            max-width: 100%;
+            border-radius: 20px;
         }
     }
     .task:not(:last-child) {
@@ -497,73 +521,12 @@ html, body {
     .task:focus-within {
         border-color: black;
     }
-
-    
-/* 
-    .task::before {
-        position: absolute;
-        padding: 8px 12px 4px 12px;
-        content: "Digite sua tarefa aqui";
-        color: gray;
-    } */
-
-
-/* 
-    .as {
-        width: 100%;
-        height: 40px;
-        min-height: fit-content;
-        background-color: yellow;
-
-        .task {
-            width: 100%;
-            height: 100%;
-
-            position: relative;
-            
-            animation: grow .5s ease forwards;
-        }
-    } */
 }
-
-
-
 
 .tasks.light {
     background-color: #003C69;
 }
-
-
 /* 
-@keyframes grow {
-    0% {
-        width: 50%;
-        height: 10%;
-        
-        left: 50%;
-        top: 50%;
-
-        transform: translate(-50%, -50%);
-    }
-    99% {
-        left: 50%;
-        top: 50%;
-
-        transform: translate(-50%, -50%);
-    }
-    100% {
-        width: 100%;
-        height: 100%;
-
-        top: 0;
-        left: 0;
-        transform: none;
-    }
-} */
-
-
-
-
 #top-container {
     width: 100%; 
     padding-block: 30px;
@@ -576,33 +539,28 @@ html, body {
    
 }
 
-
 #title {
     font-size: 64px;
    margin-top: 45px;
     color: #fff;
 }
 
-
 #Senac-logo {
     position: relative;
     height: 125px;
     top: -8px;
 }
-/* Estilo Responsivo */
+
 @media (max-width: 1024px) {
     #title {
         font-size: 48px;
     }
 
     #Senac-logo {
-        height: 100px; /* Ajuste a altura do logo */
+        height: 100px; 
     }
-}
-
-
-
-
+} 
+*/
 
 @media (max-width: 768px) {
     #top-container {
@@ -616,7 +574,6 @@ html, body {
     }
 
 }
-
 
 @media (max-width: 480px) {
     #title {
