@@ -3,11 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Senac - Tarefas</title>
+    <title>Gerenciador de Tarefas - Senac</title>
+    <link rel="shortcut icon" href="https://i0.wp.com/centralblogs.com.br/wp-content/uploads/2020/09/senac-logo.png?w=696&ssl=1" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+   
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
 </head>
 <body>
+
+    <section id="top-container">
+       <img id="Senac-logo" src="senac-logo-nova.png" alt="">
+        <div id="title">Gerenciador de Tarefas</div>
+        
+    </section>
+
+
     <div id="primary-container">
         <div id="chat">
             <div id="chat-icon">
@@ -15,8 +25,9 @@
             </div>
             <div id="messages-container">
                 <div id="username">
-                    <label for="">Escreva seu nome:</label>
-                    <input type="text">
+                 <!--  <label class= "chat-nome">Escreva seu nome:</label> -->
+                    <input class="chat-nome" type="text" placeholder="Digite seu nome">
+                    <br>
                 </div>
                 <div id="messages"></div>
                 <div id="input-container">
@@ -30,7 +41,7 @@
             </div>
         </div>
         <div id="logo">
-            <img src="senac-logo-nova.png" alt="senac-logo">
+          
         </div>
         <div id="boards">
             <div class="board board0">
