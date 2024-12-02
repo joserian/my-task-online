@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    min-width: 320px;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #003C69;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Botão Header */
+.btn-header {
+    color: white;
+    background-color: transparent;
+    width: 200px;
+    height: 60px;
+    padding: 10px;
+    margin: 8px;
+    cursor: pointer;
+    border: 3px solid white;
+    border-radius: 6px;
+    font-size: 200%;
+    font-family: "Orbitron";
+    transition: 0.4s ease;
+}
+
+.btn-header:hover {
+    background-color: #566981;
+    border: 1px solid #566981;
+}
+
+/* Seção Home */
+#home {
+    text-align: left;
+    font-weight: bolder;
+    margin: 64px;
+    letter-spacing: 8px;
+}
+
+#title-home {
+    font-size: 64px;
+}
+
+#description-home {
+    font-size: 22px;
+}
+
+/* Botão Calendário */
+#buttons {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#openCalendar {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#openCalendar img {
+    display: block;
+    width: 60px;
+    height: auto;
+}
+
+#openCalendar:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Container Principal */
+#primary-container {
+    width: 100%; /* Removido max-width */
+    margin: auto;
+}
+
+/* Top Container */
+#top-container {
+    width: 100%; /* Garantir que ocupe toda a largura */
+    padding-block: 30px;
+    background: linear-gradient(45deg, #fea50a 0%, #feb41e);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#title {
+    font-size: 64px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Relógio */
+#clock-container {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #003C69; 
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#time {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#date {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 900px;
+    text-align: center;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff5e57;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#Senac-logo {
+    height: 125px;
+}
+/* Estilo Responsivo */
+@media (max-width: 1024px) {
+    #title {
+        font-size: 48px;
+    }
+
+    #buttons {
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    #clock-container {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+
+    #openCalendar img {
+        width: 42px;
+    } 
+
+    #Senac-logo {
+        height: 100px; /* Ajuste a altura do logo */
+    }
+
+    .modal-content iframe {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    #top-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #title {
+        font-size: 36px;
+    }
+
+    #clock-container {
+        font-size: 14px;
+    }
+
+    #openCalendar img {
+        width: 35px;
+    }
+
+    #home {
+        margin: 20px;
+    }
+
+    #title-home {
+        font-size: 48px;
+        text-align: center;
+    }
+
+    #description-home {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .modal-content iframe {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    #title {
+        font-size: 28px;
+    }
+
+    #clock-container {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    #openCalendar img {
+        width: 30px;
+    }
+
+    #home {
+        margin: 10px;
+        text-align: center;
+    }
+
+    #title-home {
+        font-size: 36px;
+    }
+
+    #description-home {
+        font-size: 14px;
+    }
+
+    .modal-content iframe {
+        height: 250px;
+    }
+}
