@@ -1,566 +1,201 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-:root {
-    --title-size: 24px;
-    --text-size: 16px;
-    --icon-size: 34px;
-
-    --color-text: #11111b;
-    --board-bg-color: white;
-    --task-bg-color: white;
-}
-
 * {
-    padding: 0;
     margin: 0;
-    border: 0;
-    color: #11111b;
-    font-size: var(--text-size);
-    font-family: "Noto Sans", sans-serif;
+    padding: 0;
     box-sizing: border-box;
 }
 
 html, body {
     width: 100%;
     height: 100%;
+    min-width: 320px;
+    font-family: 'Noto Sans', sans-serif;
     background-color: #003C69;
-    position: relative;
+    color: white;
+    overflow-x: hidden;
 }
 
-#fade {
+/* Botão Header */
+.btn-header {
+    color: white;
+    background-color: transparent;
+    width: fit-content;
+    height: auto;
+    padding: 10px;
+    margin: 8px;
+    cursor: pointer;
+    border: 3px solid white;
+    border-radius: 6px;
+    font-size: 200%;
+    font-family: "Orbitron";
+    transition: 0.4s ease;
+}
+
+.btn-header:hover {
+    background-color: #566981;
+    border: 1px solid #566981;
+}
+
+/* Seção Home */
+#home {
+    text-align: left;
+    font-weight: bolder;
+    margin: 64px;
+    letter-spacing: 8px;
+}
+
+#title-home {
+    font-size: 64px;
+}
+
+#description-home {
+    font-size: 22px;
+}
+
+/* Botão Calendário */
+#buttons {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#openCalendar {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#openCalendar img {
+    display: block;
+    width: 60px;
+    height: auto;
+}
+
+#openCalendar:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Container Principal */
+#primary-container {
+    width: 100%; /* Removido max-width */
+    margin: auto;
+}
+
+/* Top Container */
+#top-container {
+    width: 100%; /* Garantir que ocupe toda a largura */
+    padding-block: 30px;
+    background: linear-gradient(45deg, #fea50a 0%, #feb41e);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#title {
+    font-size: 64px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Relógio */
+#clock-container {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #003C69; 
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#time {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#date {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Modal */
+.modal {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.39); /* Fundo semi-transparente */
-    z-index: 1; /* Garante que a camada esteja acima do conteúdo */
-    pointer-events: all;
-}
-
-#loading-icon {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    z-index: 1;
-    width: 50px;
-    padding: 8px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: white;
-    --_m: 
-      conic-gradient(#0000 10%,#000),
-      linear-gradient(#000 0 0) content-box;
-    -webkit-mask: var(--_m);
-            mask: var(--_m);
-    -webkit-mask-composite: source-out;
-            mask-composite: subtract;
-    animation: l3 1s infinite linear;
-  }
-
-@keyframes l3 {
-    to{
-        transform: rotate(1turn);
-    }
-}
-
-#primary-container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    z-index: 0;
-    
-    #top-container {
-        box-sizing: content-box;
-        width: 100%; 
-        height: max-content;
-        padding-block: 30px;
-        margin-bottom: 40px; /*40px*/
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        background: linear-gradient(45deg, #fea50a 0%, #feb41e);
-        text-align: center;
-
-        #Senac-logo {
-            height: 100px;
-        }
-
-        #title {
-            width: fit-content;
-            font-size: 64px;
-            color: #fff;
-            font-weight: bold;
-        }
-
-    }
-}
-
-#log {
-    min-width: 400px; 
-    width: fit-content;
-    height: max-content;
-    border-radius: 15px;
-    padding: 15px 20px 10px 20px;
-    
-    position: absolute;
-    animation: up .5s ease forwards;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    background-color: white;
-    box-shadow: 0px 0px 4px black;
-    z-index: 2;
-
-    .task-log {
-        width: 357px;
-        min-height: 60px;
-        background-color: #dce0e8;
-        border: 2px solid black;
-        border-radius: 8px;
-        padding: 8px 12px 4px 12px;
-        box-shadow: 0px 0px 2px #4c4f69;
-
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-
-        p {
-            word-wrap: break-word;
-        }
-
-        img {
-            max-width: 100%;
-        }
-    }
-
-    #options {
-        text-align: center;
-        margin-block: 30px;
-        
-        #message {
-            font-size: var(--title-size);
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        #buttons {
-            button {
-                font-size: var(--title-size);
-                background-color: white;
-                border-radius: 10px;
-                padding: 5px 10px;
-                cursor: pointer;
-                margin-inline: 10px;
-                box-shadow: 0px 0px 1px black;
-                border: 2px solid transparent;
-            }
-
-            button:first-child {
-                background-color: #40a02b;
-            }
-
-            button:hover {
-                border: 2px solid black;
-            }
-            
-        }
-    }
-}
-
-@keyframes up {
-    0% {
-        top: 100%;
-    }
-    100% {
-        top: 50%;   
-    }
-}
-
-#chat {
-    position: absolute;
-    top: 190px;
-    left: 15px;
-    z-index: 2;
-    transition: 0.3s ease;
-    display: flex;
-
-    #chat-icon {
-        flex: 0 0 auto;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        cursor: pointer;
-        background-color: white;
-        
-        span {
-            position: relative;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: var(--title-size);
-        }
-    }
-
-    #messages-container {
-        display: none;
-    }
-} 
-
-#chat.expanded {
-    #username {
-        width: 100%;
-        border-radius: 5px;
-        height: 30px;
-        outline: none;
-        padding: 8px 12px 4px 12px;
-       
-    }
-    
-    #username:focus {
-        outline:  2px solid #11111b;
-    }
-
-    #messages-container {
-        margin-inline: 15px;
-        width: 350px; 
-        height: 450px;
-        border-radius: 20px; 
-        background-color:#313244; 
-        display: flex;
-        flex-direction: column;
-        justify-content: end;
-        padding: 10px;
-        border: 2px solid #11111b;
-
-        #messages {
-            border-radius: 5px;
-            margin-top: 5px;
-            flex: 1;
-            padding: 5px; 
-            overflow-y: auto; 
-            scroll-behavior: smooth;
-
-            .message-container {
-                position: relative; width: 100%; min-height: fit-content; border-radius: 20px; background-color: white; margin: 10px 0px 20px 0px; padding: 10px;
-                .user {
-                    position: absolute; top: -10px; left: 10px; padding: 0px 5px; background-color: white; font-weight: bold; 
-                }
-                .message {
-                    word-break: break-all;
-                    img {
-                        max-width: 100%;
-                    }
-                    
-                }
-            }
-            .message-container:last-child {
-                margin-bottom: 0;
-            }
-        }
-
-        #input-container {
-            width: 100%;
-            min-height: 60px;
-            max-height: 200px;
-            height: fit-content;
-            display: flex;
-            align-items: end;
-            margin-top: 5px;
-            
-            #input {
-                background-color: white;
-                flex: 1;
-                height: 100%;
-                border-radius: 15px;
-                
-                #input-message {
-                    width: 100%;
-                    height: 100%;
-                    overflow: auto;
-                    
-                    word-break: break-all;
-                    outline: none;
-                    border-radius: 15px;
-                    padding: 8px 12px 4px 12px;
-
-                    img {
-                        max-width: 100%;
-                        border-radius: 20px;
-                    }
-                   
-                }
-                
-                #input-message:focus {
-                    outline: 2px solid black;
-                }
-            }
-
-            #send-icon {
-                width: 35px; 
-                height: 35px; 
-                border-radius: 50%;
-                background-color: #23d812;
-                position: relative;
-                top: -8px;
-                left: 3px;
-                cursor: pointer;
-
-                #icon {
-                    position: relative;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                }
-                
-            }
-
-            #send-icon:hover {
-                background-color: #4bff3b;
-            }
-        }
-    } 
-
-    @media (max-width: 768px) {
-        #chat {
-            top: 5px;
-            left: 5px;
-            flex-direction: column;
-            align-items: center;
-        }
-    
-        #chat-icon {
-            width: 40px;
-            height: 40px;
-    
-            span {
-                font-size: 16px;
-            }
-        }
-    
-        #chat.expanded {
-            #messages-container {
-                width: 280px;
-                height: 400px;
-                margin-inline: 10px;
-                padding: 8px;
-            }
-    
-            #input-container {
-                flex-direction: column;
-    
-                #input {
-                    flex: none;
-                    width: 100%;
-                    margin-bottom: 5px;
-                }
-    
-                #send-icon {
-                    position: static;
-                    width: 32px;
-                    height: 32px;
-                }
-            }
-        }
-    }
-    
-    @media (max-width: 480px) {
-        #chat {
-            top: 2px;
-            left: 2px;
-            flex-direction: column;
-        }
-    
-        #chat-icon {
-            width: 35px;
-            height: 35px;
-    
-            span {
-                font-size: 14px;
-            }
-        }
-    
-        #chat.expanded {
-            #messages-container {
-                width: 230px;
-                height: 300px;
-                padding: 6px;
-            }
-    
-            #input-container {
-                #input {
-                    #input-message {
-                        padding: 4px;
-                        font-size: 14px;
-                    }
-                }
-    
-                #send-icon {
-                    width: 28px;
-                    height: 28px;
-                }
-            }
-        }
-    }
-}
-
-#boards {
-    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
 }
 
-.board {
-    width: 357px;
-    min-width: 357px;
-    height: 495px;
-    background-color:  #2a6a9b;
-    margin: 0px 20px 20px 20px;
-    border-radius: 15px;
-    padding: 10px;
-    /* border: 1px solid rgb(33, 0, 41); */
-    box-shadow: 0px 0px 2px black;
-}
-
-.topbar {
-    width: 100%;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 900px;
+    text-align: center;
     position: relative;
-
-    .title-board {
-        text-align: left;
-        font-weight: bold;
-        font-size: var(--title-size);
-        color: white;
-        flex: 1;
-        span {
-            display: block;
-            position: absolute;
-            bottom: -10px;
-            font-size: 12px;
-            content: "As alterações foram salvas!";
-            animation: decrease 2s forwards; 
-        }
-    }
-
-    .remove, .add {
-        background-color: white; transition: background-color 0.1s ease;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        margin-right: 10px;
-        span {
-            position: relative;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            font-size: var(--icon-size);
-        }
-    }
-    .remove:hover, .add:hover {
-        cursor: pointer;
-        transform: scale(1.07);
-        transition: transform 0.3s ease;
-    }
 }
 
-@keyframes decrease {
-    from {
-        opacity: 100white
-    }
-    to {
-        opacity: 0%;
-    }
-}
-
-.tasks {
-    background-color: inherit;
-    margin-top: 12px;
-    height: calc(100% - 40px - 20px);
-    overflow: auto;
-    overflow-x: auto;
-    overflow-x: hidden;
-    scrollbar-color: black smoke ;
-    scrollbar-width: thin;
-    border-radius: 7px;
-
-    .task {
-        width: 100%;
-        min-height: 60px;
-        background-color: #fff;
-        border: 2px solid transparent;
-        border-radius: 8px;
-        padding: 8px 12px 4px 12px;
-        cursor: pointer;
-        box-shadow: 0px 0px 2px black;
-
-        transition: border-color 0.2s ease;
-
-        p {
-            word-wrap: break-word;
-            outline: none;
-            cursor: text;
-        }
-        
-        img {
-            max-width: 100%;
-            border-radius: 20px;
-        }
-    }
-    .task:not(:last-child) {
-        margin-bottom: 3px;
-    }
-    
-    .task:focus-within {
-        border-color: black;
-    }
-}
-
-.tasks.light {
-    background-color: #003C69;
-}
-/* 
-#top-container {
-    width: 100%; 
-    padding-block: 30px;
-    background: linear-gradient(45deg, #fea50a 0%, #feb41e);
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-   
-}
-
-#title {
-    font-size: 64px;
-   margin-top: 45px;
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff5e57;
     color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 #Senac-logo {
-    position: relative;
     height: 125px;
-    top: -8px;
 }
-
+/* Estilo Responsivo */
 @media (max-width: 1024px) {
     #title {
         font-size: 48px;
     }
 
-    #Senac-logo {
-        height: 100px; 
+    #buttons {
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
     }
-} 
-*/
+
+    #clock-container {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+
+    #openCalendar img {
+        width: 42px;
+    } 
+
+    #Senac-logo {
+        height: 100px; /* Ajuste a altura do logo */
+    }
+
+    .modal-content iframe {
+        height: 400px;
+    }
+}
 
 @media (max-width: 768px) {
     #top-container {
@@ -573,10 +208,61 @@ html, body {
         font-size: 36px;
     }
 
+    #clock-container {
+        font-size: 14px;
+    }
+
+    #openCalendar img {
+        width: 35px;
+    }
+
+    #home {
+        margin: 20px;
+    }
+
+    #title-home {
+        font-size: 48px;
+        text-align: center;
+    }
+
+    #description-home {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .modal-content iframe {
+        height: 300px;
+    }
 }
 
 @media (max-width: 480px) {
     #title {
         font-size: 28px;
+    }
+
+    #clock-container {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    #openCalendar img {
+        width: 30px;
+    }
+
+    #home {
+        margin: 10px;
+        text-align: center;
+    }
+
+    #title-home {
+        font-size: 36px;
+    }
+
+    #description-home {
+        font-size: 14px;
+    }
+
+    .modal-content iframe {
+        height: 250px;
     }
 }
