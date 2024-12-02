@@ -66,40 +66,65 @@ html, body {
 }
 
 #primary-container {
+    min-width: fit-content;
     width: 100%;
     height: 100%;
     position: relative;
     z-index: 0;
-    
+}
+
+#top-container {
+    box-sizing: content-box;
+    width: 100%; 
+    height: max-content;
+    position: relative;
+}
+
+#senac {
+    padding-block: 30px;
+    margin-bottom: 40px; /*40px*/
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, #fea50a 0%, #feb41e);
+    text-align: center;
+}
+
+#Senac-logo {
+    height: 100px;
+}
+
+#title {
+    width: fit-content;
+    font-size: 64px;
+    color: #fff;
+    font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+    #title {
+        font-size: 48px;
+    }
+} 
+
+@media (max-width: 726px) {
     #top-container {
-        box-sizing: content-box;
-        width: 100%; 
-        height: max-content;
-        position: relative;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
 
-        #senac {
+    #title {
+        font-size: 36px;
+    }
 
-            padding-block: 30px;
-            margin-bottom: 40px; /*40px*/
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            flex-wrap: wrap;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(45deg, #fea50a 0%, #feb41e);
-            text-align: center;
-            #Senac-logo {
-                height: 100px;
-            }
-    
-            #title {
-                width: fit-content;
-                font-size: 64px;
-                color: #fff;
-                font-weight: bold;
-            }
-        }
+}
 
+@media (max-width: 480px) {
+    #title {
+        font-size: 28px;
     }
 }
 
@@ -139,6 +164,7 @@ html, body {
 
         img {
             max-width: 100%;
+            border-radius: 20px;
         }
     }
 
@@ -192,27 +218,27 @@ html, body {
     transition: 0.3s ease;
     display: flex;
 
-    #chat-icon {
-        flex: 0 0 auto;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        cursor: pointer;
-        background-color: white;
-        
-        span {
-            position: relative;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: var(--title-size);
-        }
-    }
-
     #messages-container {
         display: none;
     }
-} 
+}
+
+#chat-icon {
+    flex: 0 0 auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: white;
+    
+    span {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: var(--title-size);
+    }
+}
 
 #chat.expanded {
     #username {
@@ -227,234 +253,176 @@ html, body {
     #username:focus {
         outline:  2px solid #11111b;
     }
+}
 
-    #messages-container {
-        margin-inline: 15px;
-        width: 350px; 
-        height: 450px;
-        border-radius: 20px; 
-        background-color:#313244; 
-        display: flex;
-        flex-direction: column;
-        justify-content: end;
-        padding: 10px;
-        border: 2px solid #11111b;
+#messages-container {
+    margin-inline: 15px;
+    width: 350px; 
+    height: 450px;
+    border-radius: 20px; 
+    background-color:#313244; 
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 10px;
+    border: 2px solid #11111b;
 
-        #messages {
-            border-radius: 5px;
-            margin-top: 5px;
-            flex: 1;
-            padding: 5px; 
-            overflow-y: auto; 
-            scroll-behavior: smooth;
+    #messages {
+        border-radius: 5px;
+        margin-top: 5px;
+        flex: 1;
+        padding: 5px; 
+        overflow-y: auto; 
+        scroll-behavior: smooth;
 
-            .message-container {
-                position: relative; width: 100%; min-height: fit-content; border-radius: 20px; background-color: white; margin: 10px 0px 20px 0px; padding: 10px;
-                .user {
-                    position: absolute; top: -10px; left: 10px; padding: 0px 5px; background-color: white; font-weight: bold; 
-                }
-                .message {
-                    word-break: break-all;
-                    img {
-                        max-width: 100%;
-                    }
-                    
-                }
+        .message-container {
+            position: relative; width: 100%; min-height: fit-content; border-radius: 20px; background-color: white; margin: 10px 0px 20px 0px; padding: 10px;
+            .user {
+                position: absolute; top: -10px; left: 10px; padding: 0px 5px; background-color: white; font-weight: bold; 
             }
-            .message-container:last-child {
-                margin-bottom: 0;
+            .message {
+                word-break: break-all;
+                img {
+                    max-width: 100%;
+                    border-radius: 20px;
+                }
+                
             }
         }
+        .message-container:last-child {
+            margin-bottom: 0;
+        }
+    }
 
-        #input-container {
-            width: 100%;
-            min-height: 60px;
-            max-height: 200px;
-            height: fit-content;
-            display: flex;
-            align-items: end;
-            margin-top: 5px;
+    #input-container {
+        width: 100%;
+        min-height: 60px;
+        max-height: 200px;
+        height: fit-content;
+        display: flex;
+        align-items: end;
+        margin-top: 5px;
+        
+        #input {
+            background-color: white;
+            flex: 1;
+            height: 100%;
+            border-radius: 15px;
             
-            #input {
-                background-color: white;
-                flex: 1;
+            #input-message {
+                width: 100%;
                 height: 100%;
+                overflow: auto;
+                
+                word-break: break-all;
+                outline: none;
                 border-radius: 15px;
-                
-                #input-message {
-                    width: 100%;
-                    height: 100%;
-                    overflow: auto;
-                    
-                    word-break: break-all;
-                    outline: none;
-                    border-radius: 15px;
-                    padding: 8px 12px 4px 12px;
+                padding: 8px 12px 4px 12px;
 
-                    img {
-                        max-width: 100%;
-                        border-radius: 20px;
-                    }
-                   
+                img {
+                    max-width: 100%;
+                    border-radius: 20px;
                 }
-                
-                #input-message:focus {
-                    outline: 2px solid black;
-                }
-            }
-
-            #send-icon {
-                width: 35px; 
-                height: 35px; 
-                border-radius: 50%;
-                background-color: #23d812;
-                position: relative;
-                top: -8px;
-                left: 3px;
-                cursor: pointer;
-
-                #icon {
-                    position: relative;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                }
-                
-            }
-
-            #send-icon:hover {
-                background-color: #4bff3b;
-            }
-
-            #emoji-container {
-                position: relative;
-            }
-    
-            #emoji-button {
-                border: none;
-                background: transparent;
-                cursor: pointer;
-                font-size: 24px;
-                margin-right: 10px;
-                top: -15px;
-                position: relative;
-            }
-    
-            #emoji-menu {
-                display: none; 
-                position: absolute;
-                bottom: 62px;  
-                left: 0;
-                background: white;
-                border: 1px solid #ccc;
-                border-radius: 10px;
-                padding: 10px;
-                font-size: 20px;
-                max-height: 200px; 
-                overflow-y: auto;  
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-            }
-            
-            #emoji-menu span {
-                cursor: pointer;
-                margin: 5px;
-            }
-            
-            #emoji-menu span:hover {
-                transform: scale(1.07);
-                transition: transform 0.3s ease;
-                background-color: gray;
                
             }
             
-            #emoji-button:hover{
-                transform: scale(1.07);
-                transition: transform 0.3s ease;
+            #input-message:focus {
+                outline: 2px solid black;
             }
         }
-    } 
 
-    @media (max-width: 768px) {
-        #chat {
-            top: 5px;
-            left: 5px;
-            flex-direction: column;
-            align-items: center;
+        #send-icon {
+            width: 35px; 
+            height: 35px; 
+            border-radius: 50%;
+            background-color: #23d812;
+            position: relative;
+            top: -8px;
+            left: 3px;
+            cursor: pointer;
+
+            #icon {
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            
         }
-    
-        #chat-icon {
-            width: 40px;
-            height: 40px;
-    
-            span {
-                font-size: 16px;
-            }
+
+        #send-icon:hover {
+            background-color: #4bff3b;
         }
-    
-        #chat.expanded {
-            #messages-container {
-                width: 280px;
-                height: 400px;
-                margin-inline: 10px;
-                padding: 8px;
-            }
-    
-            #input-container {
-                flex-direction: column;
-    
-                #input {
-                    flex: none;
-                    width: 100%;
-                    margin-bottom: 5px;
-                }
-    
-                #send-icon {
-                    position: static;
-                    width: 32px;
-                    height: 32px;
-                }
-            }
+
+        #emoji-container {
+            position: relative;
+        }
+
+        #emoji-button {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 24px;
+            margin-right: 10px;
+            top: -15px;
+            position: relative;
+        }
+
+        #emoji-menu {
+            display: none; 
+            position: absolute;
+            bottom: 62px;  
+            left: 0;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 20px;
+            max-height: 200px; 
+            overflow-y: auto;  
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        }
+        
+        #emoji-menu span {
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        #emoji-menu span:hover {
+            transform: scale(1.07);
+            transition: transform 0.3s ease;
+            background-color: gray;
+           
+        }
+        
+        #emoji-button:hover{
+            transform: scale(1.07);
+            transition: transform 0.3s ease;
         }
     }
-    
-    @media (max-width: 480px) {
-        #chat {
-            top: 2px;
-            left: 2px;
-            flex-direction: column;
-        }
-    
-        #chat-icon {
-            width: 35px;
-            height: 35px;
-    
-            span {
-                font-size: 14px;
-            }
-        }
-    
-        #chat.expanded {
-            #messages-container {
-                width: 230px;
-                height: 300px;
-                padding: 6px;
-            }
-    
-            #input-container {
-                #input {
-                    #input-message {
-                        padding: 4px;
-                        font-size: 14px;
-                    }
-                }
-    
-                #send-icon {
-                    width: 28px;
-                    height: 28px;
-                }
-            }
-        }
+} 
+
+@media (max-width: 480px) {
+    #senac {
+        margin-bottom: 20px;
+    }
+
+    #chat {
+        box-sizing: border-box;
+        position: relative;
+        left: 0;
+        padding-left: 15px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    #chat-icon {
+        margin-bottom: 10px;
+    }
+
+    #messages-container {
+        margin-inline: 0px;
     }
 }
 
@@ -575,58 +543,4 @@ html, body {
 
 .tasks.light {
     background-color: #003C69;
-}
-/* 
-#top-container {
-    width: 100%; 
-    padding-block: 30px;
-    background: linear-gradient(45deg, #fea50a 0%, #feb41e);
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-   
-}
-
-#title {
-    font-size: 64px;
-   margin-top: 45px;
-    color: #fff;
-}
-
-#Senac-logo {
-    position: relative;
-    height: 125px;
-    top: -8px;
-}
-
-@media (max-width: 1024px) {
-    #title {
-        font-size: 48px;
-    }
-
-    #Senac-logo {
-        height: 100px; 
-    }
-} 
-*/
-
-@media (max-width: 768px) {
-    #top-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    #title {
-        font-size: 36px;
-    }
-
-}
-
-@media (max-width: 480px) {
-    #title {
-        font-size: 28px;
-    }
 }
