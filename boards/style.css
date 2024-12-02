@@ -57,7 +57,7 @@ html, body {
     -webkit-mask-composite: source-out;
             mask-composite: subtract;
     animation: l3 1s infinite linear;
-  }
+}
 
 @keyframes l3 {
     to{
@@ -543,4 +543,22 @@ html, body {
 
 .tasks.light {
     background-color: #003C69;
+}
+
+.board0 {
+    .task {
+        background-color: 	#FF6347;
+    }
+}
+
+.board1 {
+    .task {
+        background-color: 		#FFA500;
+    }
+}
+
+.board2 {
+    .task {
+        background-color: #9ACD32;
+    }
 }
